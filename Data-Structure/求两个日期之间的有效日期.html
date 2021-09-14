@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function findDate(day1,day2){
+           let firstday = new Date(day1)
+           let lastday = new Date(day2)
+           const everyday = 24 * 60 * 60 * 1000 //计算一天需要的毫秒数
+           const time = firstday.valueOf()  //读取时间戳
+           //有五种方法：
+           // 方法一 firstday.getTime();   
+           // 方法二 firstday.valueOf();   
+           // 方法三 Data.parse(firstday); 
+           // 方法四 Number(firstday);    
+           // 方法五 +(firstday);            
+           const validDay = lastday.valueOf()-firstday.valueOf() //计算两个日期时间戳的差值
+           let result = new Array() //用数组接收结果
+           let total = 0 
+           for(total;total<=validDay;total+=everyday){
+            result.push(new Date(time + total).toLocaleDateString().replace(/\//g, '-'))//将“/”用正则替代为"-"
+           }
+           console.log(result)
+        }
+        findDate("2015-02-20", "2015-03-03")
+
+
+    </script>
+</body>
+</html>

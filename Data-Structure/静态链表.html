@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //静态链表
+        Array.prototype.staticLinkedList = function(Arr,maxlength){
+                //创建结点对象
+            function Node(data,cur){
+                    this.data = data
+                    this.cur = cur}
+                //初始化
+                for(let i = 0;i<maxlength;i++){
+                    Arr[i] = new Node(null,i+1)     
+                }
+                Arr[maxlength-1].cur = 0
+                return true
+            
+        }
+        Array.prototype.append = function (Arr,e,j){
+                        let i = Arr[0].cur
+                        if(Arr[0].cur){
+                        Arr[0].cur = Arr[i].cur
+                    }
+                    console.log(i)
+                    console.log(Arr[0].cur)
+                    //在表中第j个元素前插入新的数据元素
+                    let k = Arr.length - 1
+                    if(j<1||j>Arr.length-1){
+                        return error;
+                    }
+                    if(i){
+                        Arr[i].data = e
+                        for(let l = 1;l<j-1;l++){
+                        k = Arr[k].cur
+                    }
+                    Arr[i].cur = Arr[k].cur 
+                    Arr[k].cur = i 
+                     
+                    return true
+                    }
+                }
+           
+            let Arr = new Array()
+            Arr.staticLinkedList(Arr,5)
+            
+            Arr.append(Arr,44,2)
+            Arr.append(Arr,34,2)
+            Arr.append(Arr,54,3)
+            
+            console.log(Arr)
+            
+        
+        
+    </script>
+</body>
+</html>

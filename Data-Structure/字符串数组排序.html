@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let sortballs = (array)=>{
+            //利用正则选出“黄”字符串
+            let a = array.filter(function callback(element){return element.charCodeAt(0)==40644})
+            console.log(a)
+            //利用正则选出“红”字符串
+            let b = array.filter(function callback(element){return element.charCodeAt(0)==32418})
+            console.log(b)
+             //利用正则选出“蓝”字符串
+            let c = array.filter(function callback(element){return element.charCodeAt(0)==34013})
+            console.log(c)
+            let finalArray = a.concat(b,c)
+            console.log(finalArray)
+        }
+        sortballs(["黄","黄","红","蓝","黄","蓝","红"])
+    </script>
+    
+</body>
+</html>
