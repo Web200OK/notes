@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function LinkedList(){
+            //节点定义
+            function Node(element){
+                    this.element = element
+                    this.next = null
+            }
+            let length = 0 //存放链表长度
+            head = new Node(null) //头节点
+            //增加在尾部创建节点方法
+            this.append = function(element){
+                //创建节点
+                let node = new Node(element)
+                //使用current表示当前状态
+                let current 
+                
+                if(!head.next){
+                    //初始化第一个节点
+                    node.next = head.next
+                    head.next = node
+                    length++
+                }else{
+                    current = head.next
+                    while(current.next){
+                        current = current.next
+                    }
+                    current.next = node
+                    length++
+                }
+                    
+                    return true
+            }
+            //在指定位置插入节点方法
+            this.insert = function(position,element){
+                if(position>=0 && position<=length){
+                    let node = new Node(element)
+                    current = head
+                    //使用previous来表示当前状态的前一个指针
+                    let previous
+                    index = 0
+                    if(position ===0){
+                        node.next = current
+                        head = node
+                    }else{
+                        while(index<position){
+                            previous = current 
+                            current = current.next
+                            index++
+                        }
+                        node.next = current
+                        previous.next = node
+                    }
+                    length++
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+            //在指定位置删除节点的方法
+            this.removeAt = function(position){
+                if(position>-1&&position<length){
+                    let current = head
+                    let index = 0
+                    let previous
+                    if(position==0){
+                        head = current.next
+                    }else{
+                        while(index<position){
+                            previous = current
+                            current = current.next
+                            index++
+                        }
+                        previous.next = current.next
+                    }
+                    length--
+                    return current.element
+                }else{
+                    return null
+                }
+            }
+
+            //整表创建(头插法)
+            this.createList = function(List,len){
+                
+                let i = 0//计数器
+                let p //声明节点
+                let current
+                
+                for(i;i<len;i++){
+                    let number = Math.random()
+                    let node = new Node(null)
+                    current = head.next
+                    p = node
+                    p.element = number
+                    p.next = current
+                    head.next = p
+                    length++
+ 
+                }
+                return true
+            }
+
+            //读取第i个数据
+            this.readNumber = function(i){
+                let j = 1 //计数器
+                let current =head
+                if(i==0){
+                    return current.element
+                }else{
+                    while(j<=i){
+                        current = current.next
+                        j++
+                    }
+                    return current.element
+                }
+                
+                }
+            //获取第i个节点
+            this.readNode = function(i){
+                let j = 1 //计数器
+                let current =head
+                if(i==0){
+                    return current
+                }else{
+                    while(j<=i){
+                        current = current.next
+                        j++
+                    }
+                    return current
+                }
+            }
+            //获取链表长度
+            this.size = function(List){
+            return length
+            }
+
+            //将链表节点全部列举出来
+            this.every = function(List){
+            let Arr = []
+            for(let v = 1;v<=length;v++){
+            Arr.push(A.read(v))
+            }
+            return Arr
+            }
+
+            this.isEmpty = function(){
+                return (this.size(this)) ==0
+            }
+
+        }
+        
+        let A = new LinkedList() 
+        A.createList(A,10)
+        console.log(A.readNode(10))
+        
+    
+    </script>
+</body>
+</html>

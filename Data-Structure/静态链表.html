@@ -14,13 +14,14 @@
                 //创建结点对象
             function Node(data,cur){
                     this.data = data
-                    this.cur = cur}
+                    this.cur = cur
+                }
                 //初始化
                 for(let i = 0;i<maxlength;i++){
                     Arr[i] = new Node(null,i+1)     
                 }
                 Arr[maxlength-1].cur = 0
-                return true
+                
             
         }
         //静态链表的插入操作（在第j个位置插入数据e）
@@ -81,6 +82,8 @@
                 return Arr[k].data
             }
 
+
+
             let Arr = new Array()
             Arr.staticLinkedList(Arr,5)
             Arr.append(Arr,44,2)
@@ -88,7 +91,7 @@
             Arr.append(Arr,54,3)
             Arr.delete(Arr,2)
             let result = Arr.read(Arr,2)
-            console.log(result)
+            console.log(Arr)
             
         
         
