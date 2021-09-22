@@ -1,0 +1,19 @@
+body{
+    font-family: sans-serif;
+    background-color: rgb(2,15,7);
+}
+.box-container{
+    width: 100%;
+    /*指定观察者与z平面的距离*/
+    perspective: 1000px;
+
+}
+.box-wrapper{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+    transform-style:preserve-3d ;
+    animation:rotate 2s linear infinite both;
+    
+}

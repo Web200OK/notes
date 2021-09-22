@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形&圆角三角形</title>
+    <style type="text/css">
+    /* 三角形 */
+    #triangle{
+        width: 0;
+        height: 0;
+        border-bottom: dodgerblue 20px solid;
+        border-left: transparent 20px solid;
+        border-right: transparent 20px solid;
+    }
+    
+    /* 设置第一个圆角 */
+    #round-triangle{
+        margin-left: 100px;
+        width: 50px;
+        height: 50px;
+        background-color: turquoise;
+        border-top-right-radius: 30%; 
+    }
+    /* 在首部和尾部添加两个绝对定位的图形覆盖部分上面图形设置剩下两个圆角 */
+     #round-triangle:before, #round-triangle:after{
+        content:"";
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+        position: absolute;  
+        border-top-right-radius:30% ; 
+    }  
+    /* 设置旋转、缩放、倾斜和平移让两个伪元素边缘与上面图形边缘重合 */
+    #round-triangle:before{
+        transform:rotate(-135deg) skewX(-45deg) scale(1.45,0.7) translate(0,-50%); 
+
+    } 
+    #round-triangle:after{
+        transform:rotate(135deg) skewY(-45deg) scale(0.7,1.45) translate(50%,0);
+
+    }  
+
+    </style>
+</head>
+<body>
+    <div id="triangle"></div>
+    <div id="round-triangle"></div>
+</body>
+</html>

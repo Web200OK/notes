@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    /* 为all开启相对定位 */
+    .all{
+        position: relative;
+    }
+
+    /* 设置整个tab宽度高度 */
+    .tab{
+        width: 400px;
+        height: 3rem;
+        border-top: darkgray 1px solid;
+        border-left: darkgray 1px solid;
+        border-right: darkgray 1px solid;
+        position: absolute;
+        left: 200px;
+    }
+    /* 设置头部区为浮动并居中,清除列表样式 */
+    .tab>ul{
+        display: flex;
+        justify-content: space-between; 
+        line-height: 3rem;
+        background-color: beige;
+        list-style: none;
+    }
+    /* 设置头部各选项间隔 */
+    .tab>ul>li{
+        width: 80px;
+        text-align: center;
+    }
+    .content{
+        width: 400px;
+        height: 5rem;
+        position: absolute;
+        left: 200px;
+        top: 3rem;
+        border-bottom: darkgray 1px solid;
+        border-left: darkgray 1px solid;
+        border-right: darkgray 1px solid;
+    }
+    /* 设置内容区隐藏 */
+    .dom{
+        display: none;
+    }
+     /* 设置内容区浮动居中 */
+    .content ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    }   
+    .content li{
+        width: 200px;
+        height: 2.5rem;
+        line-height: 2.5rem;
+    }
+    .selected{
+        background-color: chartreuse;
+    }
+    
+    </style>
+
+</head>
+<body>
+    <div class="all">
+    <div class="tab">
+        <ul >
+            <li class="a selected">规则</li>
+            <li class="a">论坛</li>
+            <li class="a">安全</li>
+            <li class="a">公益</li>
+            <li class="a">公告</li>
+        </ul>
+    </div>
+    <div class="content">
+    <div class="dom" style="display: block">
+    <ul >
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    </div>
+    <div class="dom">
+    <ul >
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    </div>
+    <div class="dom">
+    <ul >
+        <li>数据七夕</li>
+        <li>阿里打造</li>
+        <li>10万家店</li>
+        <li>全球最大</li>
+    </ul>
+    </div>
+    <div class="dom">
+    <ul >
+        <li>数据七夕</li>
+        <li>阿里打造</li>
+        <li>10万家店</li>
+        <li>全球最大</li>
+    </ul>
+    </div>
+    <div class="dom">
+    <ul >
+        <li>数据七夕</li>
+        <li>阿里打造</li>
+        <li>10万家店</li>
+        <li>全球最大</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+
+var ul = document.getElementsByClassName("a")
+var dom = document.getElementsByClassName("dom")
+//遍历头部区各li标签设置移入响应函数
+    for(var i=0;i<ul.length;i++){
+    //创建一个立即执行函数开启闭包，使第二个函数可以访问到index
+        (function (){
+     var index = i
+    ul[i].onmouseover = function(){
+        for(var j=0;j<ul.length;j++){
+        dom[j].style.display = "none"
+        ul[j].className = "a"
+    }
+        this.className = "a selected"
+        dom[index].style.display = "block"
+    }
+})()
+}
+</script>
+</html>

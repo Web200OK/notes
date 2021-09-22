@@ -1,0 +1,111 @@
+.all{
+    width: 2400px; 
+    margin: 0 auto;
+    background:url("背景图.jpg");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    color: white;
+    font-family:'Courier New', Courier, monospace
+}
+.top{
+    width: auto;
+    padding: 1rem 0;
+    /* display: flex;
+    justify-content: center; */
+    position: relative;
+}
+.top::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+ #photo1{
+    float: left;
+    padding-top: 0.3rem;
+    height: 50px;
+} 
+.list{
+    width: 800px;
+    position: absolute; 
+    left: 200px;
+    bottom: 25px;
+}
+.list a{
+    display: inline-block;
+    text-decoration: none;
+    color: whitesmoke;
+    
+}
+.list>li{
+    list-style: none;
+    float: left;
+    margin: 0 20px 0 20px;
+
+}
+.list>li>a:hover{
+    font-weight: bolder;
+}
+.list>li>ul{
+    position: absolute;
+    list-style: none;
+    display: none;
+    background-color:rgba(72, 72, 139, 0.637);
+    padding-top: 40px;
+
+}
+.list>li:hover ul{
+    display: block;  
+}
+.tab1 a,.tab2 a,.tab3 a,.tab4 a,.tab5 a{
+    margin-bottom: 20px;
+    width: 150px;
+    text-align: center;
+}
+.tab1{
+    left: 125px;
+}
+.tab2{
+    left: 275px;
+}
+.tab3{
+    left: 385px;
+}
+.tab4{
+    left: 495px;
+}
+.tab5{
+    left: 615px;
+}
+#input1{
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    left: 1600px;
+    bottom: 25px;
+    border: 1px solid gainsboro;
+    border-radius:  5px 0 0 5px;
+    padding:5px 0 5px 8px;
+    
+}
+#tubiao1{
+    height: 40px;
+    position: absolute;
+    left:1808px;
+    bottom: 25px;
+    border: 1px solid gainsboro;
+    border-radius: 0 5px 5px 0;
+}
+#toTop{
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    position: fixed;
+    background-color:rgba(72, 72, 139, 0.637) ;
+    opacity: 0.9;
+    right: 20px;
+    bottom: 50px;
+    text-align: center;
+}

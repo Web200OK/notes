@@ -1,0 +1,105 @@
+①less中的注释
+以//开头的注释，不会被编译到CSS文件中
+以/**/包裹的注释会被编译到CSS文件中
+②less中的变量
+使用@来申明一个变量：@pink:pink
+1、作为普通属性值使用：直接使用@pink
+2、作为选择器值来使用：#@{selector的值}的形式
+3、作为URL:@{url}
+4、变量的延迟加载
+③less中的嵌套规则
+1、基本嵌套规则
+2、&的使用
+④less中的混合
+混合就是将一系列属性从一个规则集引入到另一个规则集的方式
+1、普通混合
+例子：
+.juzhong{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+#box1{
+    .juzhong;
+}
+2、不带输出的混合
+在被引用样式中添加一个括号即可
+3、带参数的混合
+例子：
+.juzhong(@w,@h,@c){
+    width: @w;
+    height: @h;
+    background: @c;
+}
+#box1{
+    .juzhong(100px,100px,pink);
+}
+4、带参数并且有默认值的混合
+为被引用参数的形参设置默认值
+5、带多个参数的混合
+6、命名参数
+7、匹配模式
+例子：
+/*向上的三角*/
+.triangle(top,@w:10px,@c:pink){
+    border-width:@w;
+    border-color: transparent  transparent  @c transparent ;
+    border-style:dashed dashed solid dashed  ;
+}
+/*向下的三角*/
+.triangle(bottom,@w:10px,@c:pink){
+    border-width:@w;
+    border-color: @c transparent  transparent   transparent ;
+    border-style:solid dashed dashed  dashed  ;
+}
+/*向左的三角*/
+.triangle(left,@w:10px,@c:pink){
+    border-width:@w;
+    border-color:  transparent @c  transparent   transparent ;
+    border-style: dashed solid dashed  dashed  ;
+}
+/*向右的三角*/
+.triangle(right,@w:10px,@c:pink){
+    border-width:@w;
+    border-color:  transparent   transparent   transparent @c;
+    border-style: dashed  dashed  dashed  solid;
+}
+//@_表示在上面样式被引用时该样式自动引用进去
+.triangle(@_,@w:10px,@c:pink){
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+#sanjiao{
+    .triangle(top,50px,deeppink);
+}
+8、arguments变量
+
+继承
+例子：
+.common:hover{
+    background: pink;
+}
+.common{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+.juzhong(@w:100px,@h:100px,@c:pink){
+    &:extend(.common all);
+    width: @w;
+    height: @h;
+    background: @c;
+}
+
+避免编译
+例子：
+#wrap{
+    width:~"calc(200px + 700px)";
+}
