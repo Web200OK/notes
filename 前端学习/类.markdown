@@ -1,0 +1,102 @@
+javascript类的使用
+1、定义：类关键字
+    使用关键字class可以在JS中声明一个类：
+        Class User{
+            //类的主体
+        }
+    如果在定义类时没有指定类名，可以通过类表达式，将类分配给变量：
+        const UserClass = class{
+            //类的主体
+        }
+    创建类的实例，实例是包含类所描述的数据和行为的对象
+        -使用new运算符实例化该类，语法：instance = new Class()
+2、初始化:constructor()
+    constructor(param1,param2,...)是用于初始实例的类主体的一种特殊方法，在这里可以设置字段的初始值或进行任何类型的对象设置
+        Class User{
+            constructor(name){
+                this.name = name
+            }
+        }
+    在构造函数中，this值等于新创建的实例，用于实例化类的参数成为构造函数的参数
+3、字段
+    类字段是保存信息的变量，字段可以附加到两个实体：
+        （1）类实例上的字段
+        （2）类本身的字段（也称为静态字段）
+    字段有两种级别可访问性：
+        （1）public：该字段可以在任何地方访问
+        （2）private：字段只能在类的主体中访问
+    3.1、公共实例字段
+        class SomeClass{
+            field1;
+            field2 = "Initial value"
+        }
+    对公共字段你的访问或更新没有限制，可以读取构造函数、方法和类外部的公共字段并将其赋值
+    3.2、私有实例字段
+        隐藏对象内部数据的方法是使用私有字段，这些字段只有在它们所属的类中读取和更改，类的外部世界不能直接更改私有字段
+        私有字段只能在类的主体中访问
+        在字段前面加上#使其成为私有的，每次处理字段时都必须保留前缀#声明它，读取它或修改它
+    3.3、公共静态字段
+        使用特殊的关键字后面跟字段名：如static myStaticField
+        要访问静态字段，必须使用后跟字段名称的类
+    3.4、私有静态字段
+        要使静态字段成为私有的，只要在字段前面加上#符号：static #myPrivateStaticField
+        只能在User类中访问，类的外部不会干扰限制机制
+4、方法
+    方法保存数据，但是修改数据的能力由属于类的一部分特殊功能实现：方法
+    JS类同时支持实例和静态方法
+    4.1、实例方法
+    实例方法可以访问和修改实例数据，是来方法可以调用其他实例方法，也可以调用任何静态方法
+    方法也可以是私有的，方法名称以#开头即可
+        例子：
+            class User {
+                #name;
+
+                constructor(name) {
+                    this.#name = name;
+                }
+
+                #getName() {
+                    return this.#name;
+                }
+
+                nameContains(str) {
+                    return this.#getName().includes(str);
+                }
+                }
+
+                const user = new User('Fundebug');
+                user.nameContains('Fun');   // => true
+                user.nameContains('Code'); // => false
+
+                user.#getName(); // SyntaxError is thrown
+        #getName()是一个私有方法。在方法nameContains(str)中，可以这样调用一个私有方法:this.#getName()。
+        由于是私有的，#getName()不能在用User 类主体之外调用。
+    4.2、getters和setters
+        在尝试获取字段值时执行getter，在尝试设置值时使用setter
+    4.3、静态方法
+        静态方法是直接附加到类的函数，它们持有与类相关的逻辑，而不是类的实例
+        要创建一个静态方法，请使用特殊的关键字static和一个常规的方法语法：static myStaticMethod(){}
+        使用静态方法，有两个规则需要记住：
+            （1）静态方法可以访问静态字段
+            （2）静态方法不能访问实例字段
+        静态方法也可以是私有的：static #staticFunction(){},同样只能在类主体中调用私有静态方法
+5、继承：extends
+    JS中的类使用extends关键字支持单继承
+    在class Child extends Parent{}表达式中，Child类从Parent继承构造函数，字段和方法
+    注：父类的私有成员不会被子类继承
+    5.1、父构造函数：conostructor()中的super()
+        如果希望在子类中调用父类构造函数，则需要使用子类构造函数中可用的super()特殊函数
+        注：在使用this关键字前，必须在子函数构造函数中执行super()，调用super()确保父构造函数初始实例化
+    5.2、父实例：方法中的super 
+        如果希望在子方法中访问父方法，可以使用特殊的快捷方式super
+        子类方法直接从父类中访问方法，这个特性叫做方法重写
+        注：也可以在静态方法中使用super来访问父类的静态方法
+6、对象类型检查：instance of
+    object instance if Class确定object是否为Class实例的运算符
+7、类和原型
+    类是在原型继承基础上构建的，每个类都是一个函数，并在作为构造函数调用时创建一个实例
+
+
+
+
+
